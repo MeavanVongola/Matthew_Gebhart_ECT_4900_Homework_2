@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Matthew Gebhart ECT 4900 Homework 2</title>
+  <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+
+  <script src="https://recast-api.donmccurdy.com/aframe-inspector-plugin-recast.js"></script>
+
+  <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.min.js"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/aframe-blink-controls/dist/aframeblink-controls.min.js"></script>
+
+</head>
+
+<body>
+  <!--We included cursor with "rayOrigin: mouse" so that to activate click events -->
+  <a-scene inspector-plugin-recast cursor="rayOrigin: mouse">
+    <a-assets>
+      <!-- We preload 3d model as asset here. We reference to animatedModel.gltf file-->
+      <a-asset-item id="myModel2" src="vanguardDance.gltf"></a-asset-item>
+    </a-assets>
+    <!-- We give the id "Clickable" and increase the scale to 3 3 3 because animatedModel.gltf file is too small-->
+    <!-- We also added exact name of the animation, i.e. animation-mixer="clip: Taunt" -->
+    <a-entity id="clickable" gltf-model="vanguardDance.gltf" scale="0.03 0.03 0.03" 
+    position="0 2.72098 -2.72544" rotation="" animation-mixer="clip: Taunt"></a-entity>
+
+      
+     
+      <a-plane scale="" color="#333" width="6" height="6" rotation="-90 0 0" 
+      position="0 -0.00219 -3" material="" geometry=""></a-plane>
+      
+      <a-entity id="nav-mesh" gltf-model="navmesh.gltf" nav-mesh rotation="0 0
+        0" position="0 0 0" visible="true">
+        </a-entity>
+
+        <a-entity id="player" movement-controls="constrainToNavMesh: true">
+            <a-entity camera position="0 1.6 0" look-controls>
+            <a-cursor nav-debug-pointer raycaster="objects: [nav-mesh];"></acursor>
+            </a-entity>
+
+
+  </a-scene>
+</body>
+
+<script>
+  // We declare variables 
+  var myScene = document.querySelector("a-scene");
+  var myElement = myScene.querySelector("#clickable");
+  var myBox = myScene.querySelector("#myButton");
+  
+  // We create onclick event
+  myButton.addEventListener("click", function () {
+    // We check, if myElement has attribute of animation-mixer and its property clip equals to "Taunt"
+     
+    if (myElement.getAttribute("animation-mixer").clip === 'Taunt') {}
+
+  })
+</script>
+</html>
